@@ -22,7 +22,7 @@ from pyrogram.errors import FloodWait
 from ethon.pyfunc import video_metadata
 from ethon.telefunc import force_sub
 
-ft = f"To use this bot you've to join @{fs}."
+ft = f"Not For You!"
 
 batch = []
 
@@ -62,8 +62,8 @@ async def _batch(event):
                 return await conv.send_message("Cannot wait more longer for your response!")
             try:
                 value = int(_range.text)
-                if value > 400:
-                    return await conv.send_message("You can only get upto 400 files in a single batch.")
+                if value > 800:
+                    return await conv.send_message("You can get upto 800 files in a single batch.")
             except ValueError:
                 return await conv.send_message("Range must be an integer!")
             s, r = await check(userbot, Bot, _link)
@@ -89,6 +89,8 @@ async def run_batch(userbot, client, sender, link, _range):
             timer = 30
         if i < 400 and i > 200:
             timer = 60
+        if i < 800 and i > 400:
+            timer = 120
         if not 't.me/c/' in link:
             if i < 25:
                 timer = 2
